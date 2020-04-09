@@ -1,45 +1,65 @@
 package by.epamlab.model.beans;
 
 import javax.persistence.*;
-import java.util.List;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Column(name = "login")
-    private String login;
-    @Column(name = "password")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @NotNull
+    @Size(min = 1, message = "{Size.user.username}")
+    @Column(name = "username", nullable = false, unique = true)
+    private String username;
+
+//    @ValidPassword
+    @Size(min = 1)
+    @Column(name = "password", nullable = false)
     private String password;
-    @Column(name = "name")
-    private String name;
-    @Column(name = "email")
+
+//    @ValidEmail
+    @NotNull
+    @Size(min = 1, message = "{Size.user.email}")
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
+    @Column(name = "enabled", nullable = false)
+    private boolean enabled;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_authority",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "authority_id")})
+    private Set<Authority> authorities = new HashSet<>();
+
     public User() {
-        super();
     }
 
-    public User(String login, String password, String name, String email) {
-        this.login = login;
+    public User(String username, String password) {
+        this.username = username;
         this.password = password;
-        this.name = name;
-        this.email = email;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-
-    public String getLogin() {
-        return login;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -50,14 +70,6 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -66,4 +78,31 @@ public class User {
         this.email = email;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Set<Authority> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(Set<Authority> authorities) {
+        this.authorities = authorities;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", enabled=" + enabled +
+                ", authorities=" + authorities +
+                '}';
+    }
 }

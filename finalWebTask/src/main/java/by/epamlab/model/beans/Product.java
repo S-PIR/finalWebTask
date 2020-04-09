@@ -1,5 +1,7 @@
 package by.epamlab.model.beans;
 
+import by.epamlab.model.beans.cart.Saleable;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -7,18 +9,59 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "product")
-public class Product implements Saleable{
+
+public class Product implements Saleable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "description")
     private String description;
+
     @Column(name = "price")
     private BigDecimal price;
+
     @Column(name = "image")
     private String image;
+
+    @Column(name = "category")
+    private int category;
+
+    @Column(name = "quantity")
+    private int quantity;
+
+    @Override
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    public Product() {
+    }
+
+    public Product(String name, String description, BigDecimal price, String image, int category) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.image = image;
+        this.category = category;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public int getId() {
         return id;
@@ -26,11 +69,6 @@ public class Product implements Saleable{
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Override
-    public String getName() {
-        return name;
     }
 
     public void setName(String name) {
@@ -45,11 +83,6 @@ public class Product implements Saleable{
         this.description = description;
     }
 
-    @Override
-    public BigDecimal getPrice() {
-        return price;
-    }
-
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
@@ -62,17 +95,47 @@ public class Product implements Saleable{
         this.image = image;
     }
 
+    public int getCategory() {
+        return category;
+    }
+
+    public String getStringCategory(){
+        return CategoryType.values()[category].toString().toLowerCase();
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
+    }
+
     @Override
     public boolean equals(Object o) {
-        if (o == null) return false;
         if (this == o) return true;
         if (!(o instanceof Product)) return false;
         Product product = (Product) o;
-        return id == product.id;
+        return getId() == product.getId() &&
+                getCategory() == product.getCategory() &&
+                getQuantity() == product.getQuantity() &&
+                Objects.equals(getName(), product.getName()) &&
+                Objects.equals(getDescription(), product.getDescription()) &&
+                Objects.equals(getPrice(), product.getPrice()) &&
+                Objects.equals(getImage(), product.getImage());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, price, image);
+        return Objects.hash(getId(), getName(), getDescription(), getPrice(), getImage(), getCategory(), getQuantity());
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", image='" + image + '\'' +
+                ", category=" + category +
+                ", quantity=" + quantity +
+                '}';
     }
 }

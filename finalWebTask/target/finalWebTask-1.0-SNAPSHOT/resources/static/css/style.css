@@ -1,0 +1,15 @@
+
+body {
+	color:red;
+}
+
+h1{
+	color:red;
+}
+
+.truncate {
+	width: 250px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

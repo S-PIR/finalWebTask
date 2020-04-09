@@ -1,0 +1,186 @@
+[33mcommit 206b5cfd81e554d54c1f68b7d67ef0934a81f955[m[33m ([m[1;36mHEAD -> [m[1;32mproduct[m[33m)[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Thu Jan 2 23:34:39 2020 +0300
+
+    product img uploading
+
+[33mcommit d308a34632d386ddd0cb31ec580519d74f7c8454[m[33m ([m[1;31morigin/final[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mfinal[m[33m)[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Sun Dec 29 12:32:03 2019 +0300
+
+    some changes
+
+[33mcommit 545b7174c03eec98305e4668f28a49484460c52e[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Sat Dec 28 20:51:00 2019 +0300
+
+    some canges
+
+[33mcommit 937bb3602dda6a082f81490116b054eb914aed8e[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Wed Dec 25 21:37:52 2019 +0300
+
+    sec:authentication added
+
+[33mcommit b2fdc07bf2d8de860eb8a1f7178dcc19cac4eb5a[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Wed Dec 25 21:27:39 2019 +0300
+
+    sec:authentication added
+
+[33mcommit 19847248d8bcdfd612252ea6866d6bebabd15fa2[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Wed Dec 25 12:13:57 2019 +0300
+
+    useless commit
+
+[33mcommit 954a76d1318f8e0fe9c809ea582f4ff33341923d[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Wed Dec 25 10:29:46 2019 +0300
+
+    usless commit
+
+[33mcommit d9afdbd8dcb5d654b4b20ee8817a9b52dca1b845[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Wed Dec 18 20:35:01 2019 +0300
+
+    Working registration validation
+
+[33mcommit 23109e866b593985ff6bd1eb913462425a413d8d[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Wed Dec 18 18:43:36 2019 +0300
+
+    validation/UserValidator
+
+[33mcommit 6c97d48f56eb431cbe35d4b408ced905809594e6[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Sun Dec 15 20:04:06 2019 +0300
+
+    annatation validation problems
+
+[33mcommit 82467e3469031d5064886fb9e03496430ef0838d[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Sat Dec 14 20:52:59 2019 +0300
+
+    check for userDto validation
+
+[33mcommit a4db5852d1b3d5f1d3081ddc272a0fa6e37747fe[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Fri Dec 13 19:38:55 2019 +0300
+
+    jgjhk
+
+[33mcommit a5fec8babbd069809fe36840b57552bb9dc3a4be[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Mon Dec 9 20:46:50 2019 +0300
+
+    Registration validation added
+
+[33mcommit a849534a3b6ad8ff16bb3c6ac116106eeaa93c9f[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Sun Dec 8 20:38:34 2019 +0300
+
+    registration form added
+
+[33mcommit 1ec18266d313ad60650e6c22009b2176ff94f6cc[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Tue Dec 3 20:52:50 2019 +0300
+
+    Registration task
+
+[33mcommit ecb72a7a0947120cbdf13648be6e3af5886066a4[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Tue Nov 26 07:23:22 2019 +0300
+
+    DB added
+
+[33mcommit 7c9d4220328970eb9986f829176cbc653736d6b3[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Mon Nov 25 07:02:04 2019 +0300
+
+    Login ready, registration starting
+
+[33mcommit a6e4b1c5bdc0396e8d8018bc36dc3ce72bcb0018[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Sat Nov 23 11:32:25 2019 +0300
+
+    23/11/2019 security config problems
+
+[33mcommit 7eda95116799a1fff2d23559583a20c175c261c6[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Sun Nov 17 18:09:04 2019 +0300
+
+    need to fix security problems
+
+[33mcommit d3b7163044f4abb33768630c1bd497b8ab6db17d[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Sat Nov 16 11:05:22 2019 +0300
+
+    security issue
+
+[33mcommit 6b0d65203ca8742c33eb623c32d765d3ef74e360[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Sun Oct 27 12:04:28 2019 +0300
+
+    have to add registration form
+
+[33mcommit 5e44253e804ba6853f1143460032234a8a6dd857[m
+Merge: 53a9416 099fb24
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Sat Oct 26 09:26:14 2019 +0300
+
+    Merge branch 'final' of https://github.com/S-PIR/finalWebTask into final
+
+[33mcommit 53a9416953570ea68965ff3f4f07e332eae814f8[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Sat Oct 26 09:24:19 2019 +0300
+
+    asdf
+
+[33mcommit 099fb24e302ee8c46cb24fab628dbe3cbecd48ca[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Fri Oct 25 20:56:31 2019 +0300
+
+    asd
+
+[33mcommit 0a4f5eac6e3d1fd43ee84e927f474151a02299b9[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Thu Oct 24 23:25:29 2019 +0300
+
+    24.10.2019
+
+[33mcommit ef6379dd42206295ecce12aec06ca90bcc993622[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Wed Oct 23 20:47:47 2019 +0300
+
+    add picture
+
+[33mcommit efc4efeb31a82f73664db546327fd62a64f60958[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Tue Oct 22 23:54:29 2019 +0300
+
+    bootstrap features were added
+
+[33mcommit d3bbd336f7ae0750d433b23d767c1be38aae97fa[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Sun Oct 20 09:19:44 2019 +0300
+
+    asdf
+
+[33mcommit ac1f70911d57768b5fc836533979f567d2665977[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Sat Oct 19 21:16:02 2019 +0300
+
+    db connection was added
+
+[33mcommit 32bbea9689edde319886f8e8821fd8c4d409c254[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Sat Oct 19 21:13:06 2019 +0300
+
+    db connection (hibernate) was added
+
+[33mcommit d635fa4eb6fc189156f53e7d0e06e1ce30cc6b27[m
+Author: Siarhei Pirahou <sergserg353@gmail.com>
+Date:   Sat Oct 19 10:19:10 2019 +0300
+
+    initial commit

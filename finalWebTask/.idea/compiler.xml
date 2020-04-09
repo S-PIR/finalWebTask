@@ -9,5 +9,8 @@
         <module name="finalWebTask" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="finalWebTask" target="10" />
+    </bytecodeTargetLevel>
   </component>
 </project>
