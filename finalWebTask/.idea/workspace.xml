@@ -9,64 +9,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/by/epamlab/controller/RegistrationController.java" line="37" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b5f3def-9368-4683-b5d9-5c47faf9dc46" name="Default Changelist" comment="filesystem upload and view file">
-      <change beforePath="$PROJECT_DIR$/../final.war" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/finalWebTask_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/finalWebTask_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_3_0_11_RELEASE1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Spring_4_3_18_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalWebTask.iml" beforeDir="false" afterPath="$PROJECT_DIR$/finalWebTask.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/finalWebTask_war_exploded/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epamlab/config/AppInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epamlab/config/AppInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epamlab/config/ThymeLeafConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epamlab/config/ThymeLeafConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epamlab/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epamlab/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epamlab/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epamlab/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epamlab/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epamlab/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epamlab/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epamlab/controller/RegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epamlab/exception/QuantityOutOfRangeException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epamlab/exception/QuantityOutOfRangeException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epamlab/model/beans/Cart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epamlab/model/beans/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epamlab/model/beans/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epamlab/model/beans/Role.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epamlab/model/beans/Saleable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epamlab/model/beans/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epamlab/model/beans/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/registration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/classes/by/epamlab/config/AppInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/classes/by/epamlab/config/AppInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/classes/by/epamlab/config/ThymeLeafConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/classes/by/epamlab/config/ThymeLeafConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/classes/by/epamlab/config/WebConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/classes/by/epamlab/config/WebConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/classes/by/epamlab/config/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/classes/by/epamlab/config/WebSecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/classes/by/epamlab/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/classes/by/epamlab/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/classes/by/epamlab/controller/RegistrationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/classes/by/epamlab/controller/RegistrationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/classes/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/classes/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/lib/javassist-3.20.0-GA.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/lib/servlet-api-2.5.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/view/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/view/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/view/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/view/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/view/login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/view/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/view/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/view/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/finalWebTask-1.0-SNAPSHOT/WEB-INF/view/registration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../siarhei-pirahou" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webSpringApp/.idea/artifacts/webSpringApp_war_exploded.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webSpringApp/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webSpringApp/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webSpringApp/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webSpringApp/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webSpringApp/web/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webSpringApp/web/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webSpringApp/webSpringApp.iml" beforeDir="false" />
-    </list>
+    <list default="true" id="0b5f3def-9368-4683-b5d9-5c47faf9dc46" name="Default Changelist" comment="filesystem upload and view file" />
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -201,7 +144,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="width" value="1180" />
     <option name="height" value="1050" />
@@ -668,7 +611,7 @@
       <workItem from="1585148092492" duration="5816000" />
       <workItem from="1585464222143" duration="2414000" />
       <workItem from="1586422274303" duration="562000" />
-      <workItem from="1586435311780" duration="790000" />
+      <workItem from="1586435311780" duration="1037000" />
     </task>
     <task id="LOCAL-00001" summary="sec:authentication added">
       <created>1577298460052</created>
@@ -755,10 +698,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="238366000" />
+    <option name="totallyTimeSpent" value="238613000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49895614" visible="true" weight="0.116621986" />
