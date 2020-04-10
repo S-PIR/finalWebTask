@@ -47,6 +47,16 @@
 
             </div>
         </div>
+
+        <ul class="pagination justify-content-center">
+            <li th:each="page : ${pages}" class="page-item">
+                <a class="page-link" href="" th:href="@{/main/{page}}" th:text="${page}">1</a>
+            </li>
+
+        </ul>
+
+
+
     </div>
 </div>
 <div th:insert="footer::footer"/>

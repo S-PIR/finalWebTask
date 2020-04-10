@@ -78,6 +78,20 @@ public class ProductRegisterService implements ProductService {
     }
 
     @Override
+    public List<Product> findProductsByCategoryAndPage(String category, int limit, int offset){
+        if (category == null){
+            return repository.findAllByPage(limit, offset);
+        } else {
+            return repository.findAllByCategoryAndPage(category, limit, offset);
+        }
+    }
+
+    @Override
+    public long getTotalProductsNumber() {
+        return  repository.count();
+    }
+
+    @Override
     public void deleteProduct(Integer productId) {
         Product product = findProduct(productId);
         repository.delete(product);

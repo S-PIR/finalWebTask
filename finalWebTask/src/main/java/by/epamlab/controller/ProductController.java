@@ -9,27 +9,30 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static by.epamlab.constants.Constants.*;
 
 
 @Controller
 public class ProductController {
-    private final static Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
+    private static final int PRODUCTS_ON_PAGE = 6;
+    private static final Integer DEFAULT_PAGE_NUMBER = 1;
 
     @Autowired
     private ProductService productService;
@@ -41,10 +44,20 @@ public class ProductController {
     @Qualifier("productValidator")
     private Validator validator;
 
-    @GetMapping("/main")
-    public String getAllProducts(@RequestParam(value = "category", required = false) String category,
+    @GetMapping(value = {"/main", "/main/{pageId}"})
+    public String getAllProducts(@PathVariable Optional<Integer> optionalPageId,
+                                 @RequestParam(value = "category", required = false) String category,
                                  Map<String, Object> model){
-        Iterable<Product> products = productService.findProductsByCategory(category);
+        Integer pageId = optionalPageId.orElse(DEFAULT_PAGE_NUMBER);
+        System.out.println("pageId = " + pageId);
+        List<Product> products = productService
+                .findProductsByCategoryAndPage(category, (pageId-1)*PRODUCTS_ON_PAGE, PRODUCTS_ON_PAGE);
+        products.stream().forEach(System.out::println);
+        int pageNumber = (int)(productService.getTotalProductsNumber() / PRODUCTS_ON_PAGE + 1);
+        int[] pages = IntStream.range(DEFAULT_PAGE_NUMBER, pageNumber).toArray();
+        Arrays.stream(pages).forEach(System.out::println);
+        model.put("currentPage", pageId);
+        model.put("pages", pages);
         model.put("products", products);
         model.put("itemQuantity", cartService.getCart().getItemQuantity());
         return "main";

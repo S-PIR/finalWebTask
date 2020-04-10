@@ -95,6 +95,14 @@ public class ProductRepo implements ProductRepository {
     }
 
     @Override
+    public long count() {
+        try (Session session = sessionFactory.openSession()) {
+            Query<Long> query = session.createQuery("select count(*) from Product");
+            return query.uniqueResult();
+        }
+    }
+
+    @Override
     public Product findOne(Integer id) {
         try (Session session = sessionFactory.openSession()) {
             Query<Product> query = session.createQuery("from Product where id=:id");
@@ -120,6 +128,30 @@ public class ProductRepo implements ProductRepository {
             String hql = "from Product where category = :cat";
             Query query = session.createQuery(hql);
             query.setParameter("cat", cat);
+            return query.list();
+        }
+    }
+
+    @Override
+    public List<Product> findAllByPage(int limit, int offset) {
+        try (Session session = sessionFactory.openSession()) {
+            String hql = "from Product p order by p.id";
+            Query query = session.createQuery(hql);
+            query.setFirstResult(offset);
+            query.setMaxResults(limit);
+            return query.list();
+        }
+    }
+
+    @Override
+    public List<Product> findAllByCategoryAndPage(String category, int limit, int offset) {
+        try (Session session = sessionFactory.openSession()) {
+            int cat = CategoryType.valueOf(category).ordinal();
+            String hql = "from Product where category = :cat";
+            Query query = session.createQuery(hql);
+            query.setParameter("cat", cat);
+            query.setFirstResult(offset);
+            query.setMaxResults(limit);
             return query.list();
         }
     }
