@@ -14,5 +14,5 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
     List<Product> findAllByPage(int limit, int offset);
     List<Product> findAllByCategoryAndPage(String category, int limit, int offset);
     int updateAll(Map<Saleable, Integer> products) throws QuantityOutOfRangeException;
-    long count();
+    long count(String category);
 }

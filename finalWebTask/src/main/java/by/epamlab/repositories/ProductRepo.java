@@ -95,9 +95,16 @@ public class ProductRepo implements ProductRepository {
     }
 
     @Override
-    public long count() {
+    public long count(String category) {
         try (Session session = sessionFactory.openSession()) {
-            Query<Long> query = session.createQuery("select count(*) from Product");
+            Query<Long> query = null;
+            if (category == null || category.isEmpty()){
+                query = session.createQuery("select count(*) from Product");
+            } else {
+                int cat = CategoryType.valueOf(category).ordinal();
+                query = session.createQuery("select count(*) from Product where category =:cat");
+                query.setParameter("cat", cat);
+            }
             return query.uniqueResult();
         }
     }

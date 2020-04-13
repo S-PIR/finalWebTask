@@ -44,20 +44,21 @@ public class ProductController {
     @Qualifier("productValidator")
     private Validator validator;
 
-    @GetMapping(value = {"/main", "/main/{pageId}"})
+    @GetMapping(value = {"/main", "/main/{optionalPageId}"})
     public String getAllProducts(@PathVariable Optional<Integer> optionalPageId,
                                  @RequestParam(value = "category", required = false) String category,
                                  Map<String, Object> model){
         Integer pageId = optionalPageId.orElse(DEFAULT_PAGE_NUMBER);
-        System.out.println("pageId = " + pageId);
         List<Product> products = productService
-                .findProductsByCategoryAndPage(category, (pageId-1)*PRODUCTS_ON_PAGE, PRODUCTS_ON_PAGE);
-        products.stream().forEach(System.out::println);
-        int pageNumber = (int)(productService.getTotalProductsNumber() / PRODUCTS_ON_PAGE + 1);
-        int[] pages = IntStream.range(DEFAULT_PAGE_NUMBER, pageNumber).toArray();
-        Arrays.stream(pages).forEach(System.out::println);
+                .findProductsByCategoryAndPage(category, PRODUCTS_ON_PAGE, (pageId-1)*PRODUCTS_ON_PAGE);
+        int pageNumber = (int)((productService.getTotalProductsNumber(category) + PRODUCTS_ON_PAGE - 1) / PRODUCTS_ON_PAGE);
+        int[] pages = IntStream.rangeClosed(DEFAULT_PAGE_NUMBER, pageNumber).toArray();
+        model.put("category", category);
+        model.put("previousPage", pageId - 1);
         model.put("currentPage", pageId);
+        model.put("nextPage", pageId + 1);
         model.put("pages", pages);
+        model.put("lastPage", pages.length);
         model.put("products", products);
         model.put("itemQuantity", cartService.getCart().getItemQuantity());
         return "main";
