@@ -16,7 +16,7 @@
         <div class="jumbotron col-lg">
             <h3>Please sign in</h3>
 <!--        @thymesVar id="error" type="java"-->
-            <div th:if="${error}" class="alert alert-danger" role="alert">
+            <div th:if="${error}" class="alert alert-danger" role="alert" th:text="#{message.login.error}">
                 Invalid user name or password!
             </div>
 
