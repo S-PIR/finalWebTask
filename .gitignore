@@ -8,6 +8,8 @@
 # Игнорирование папок (файлов) с именем, содержащим спецсимволы
 # Игнорирование всех файлов и папок в ЛЮБЫХ директориях с указанным именем
 # Например /.idea/user.jpg, /core/.idea/user.jpg
-\.idea/*
-bin/*
-target/*
+\.idea/
+bin/
+target/
+finalWebTask/target
+finalWebTask/\.idea
