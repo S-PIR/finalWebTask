@@ -54,6 +54,7 @@ public class ProductController {
                 .findProductsByCategoryAndPage(category, PRODUCTS_ON_PAGE, (pageId-1)*PRODUCTS_ON_PAGE);
         int pageNumber = (int)((productService.getTotalProductsNumber(category) + PRODUCTS_ON_PAGE - 1) / PRODUCTS_ON_PAGE);
         int[] pages = IntStream.rangeClosed(DEFAULT_PAGE_NUMBER, pageNumber).toArray();
+        System.out.println("category = " + category);
         model.put("category", category);
         model.put("previousPage", pageId - 1);
         model.put("currentPage", pageId);
@@ -127,7 +128,6 @@ public class ProductController {
     public ModelAndView changeProductData(@RequestParam(value = "productId", required = true) Integer productId,
                                           @ModelAttribute("product") @Valid ProductDto productDto,
                                           BindingResult bindingResult,
-                                          WebRequest request,
                                           Errors errors) {
 
         validator.validate(productDto, errors);
@@ -157,6 +157,18 @@ public class ProductController {
         return new ModelAndView("redirect:/main");
     }
 
+    @GetMapping("/search")
+    public String getSearchedProducts(@RequestParam(value = "category", required = false) String category,
+                                     @RequestParam(value = "criterion") String criterion,
+                                     Map<String, Object> model){
+        List<Product> products = productService
+                .findProductsByCategoryAndCriterion(category, criterion);
+        model.put("category", category);
+        model.put("products", products);
+        model.put("itemQuantity", cartService.getCart().getItemQuantity());
+        return "main";
+    }
+
     private Product createProduct(ProductDto productDto) {
         Product product  = null;
         try {
@@ -171,7 +183,6 @@ public class ProductController {
     private Product updateProduct(int productId, ProductDto productDto){
         Product updatedProduct  = null;
         try {
-            System.out.println(productDto);
             updatedProduct = productService.updateProduct(productDto, productId);
             LOGGER.info(PRODUCT_UPDATED + productId);
         } catch (ProductExistsException e) {

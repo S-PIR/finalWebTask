@@ -163,5 +163,30 @@ public class ProductRepo implements ProductRepository {
         }
     }
 
+    @Override
+    public List<Product> findAllByCriterion(String criterion) {
+        try (Session session = sessionFactory.openSession()) {
+            String pattern = "%" + criterion + "%";
+            String hql = "from Product where name like :pattern";
+            Query query = session.createQuery(hql);
+            query.setParameter("pattern", pattern);
+            return query.list();
+        }
+    }
+
+    @Override
+    public List<Product> findAllByCategoryAndCriterion(String category, String criterion) {
+        try (Session session = sessionFactory.openSession()) {
+            int cat = CategoryType.valueOf(category).ordinal();
+            String pattern = "%" + criterion + "%";
+            System.out.println("pattern = " + pattern);
+            String hql = "from Product where category = :cat and name like :pattern";
+            Query query = session.createQuery(hql);
+            query.setParameter("cat", cat);
+            query.setParameter("pattern", pattern);
+            return query.list();
+        }
+    }
+
 
 }

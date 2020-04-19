@@ -80,11 +80,21 @@ public class ProductRegisterService implements ProductService {
 
     @Override
     public List<Product> findProductsByCategoryAndPage(String category, int limit, int offset){
-        System.out.println("category = " + category);
         if (category == null || category.isEmpty()){
             return repository.findAllByPage(limit, offset);
         } else {
             return repository.findAllByCategoryAndPage(category, limit, offset);
+        }
+    }
+
+    @Override
+    public List<Product> findProductsByCategoryAndCriterion(String category, String criterion){
+        System.out.println("from findProductsByCategoryAndCriterion() category = " + category);
+        System.out.println("from findProductsByCategoryAndCriterion() criterion = " + criterion);
+        if (category == null || category.isEmpty()){
+            return repository.findAllByCriterion(criterion);
+        } else {
+            return repository.findAllByCategoryAndCriterion(category, criterion);
         }
     }
 

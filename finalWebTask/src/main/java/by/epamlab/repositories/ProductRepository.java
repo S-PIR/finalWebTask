@@ -13,6 +13,8 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
     List<Product> findAllByCategory(String category);
     List<Product> findAllByPage(int limit, int offset);
     List<Product> findAllByCategoryAndPage(String category, int limit, int offset);
+    List<Product> findAllByCriterion(String criterion);
+    List<Product> findAllByCategoryAndCriterion(String category, String criterion);
     int updateAll(Map<Saleable, Integer> products) throws QuantityOutOfRangeException;
     long count(String category);
 }

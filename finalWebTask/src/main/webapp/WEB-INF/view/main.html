@@ -12,8 +12,10 @@
 <div th:insert="header::header"/>
 <div th:insert="header::header-profile"/>
 
-<div class="container">
+<div class="container" >
+
     <div th:insert="main::pagination"/>
+
     <div class="row">
         <div th:each="product : ${products}" class="card border-light col-sm-4">
             <div>
@@ -40,7 +42,7 @@
                 <div class="d-flex justify-content-center">
                     <form action="" method="post">
                         <input type="hidden" name="productId" th:value="${product.id}"/>
-                        <button class="btn btn-outline-info btn-sm" th:formaction="@{/addToCart}" th:text="#{label.form.add}">ADD TO CART</button>
+                        <button class="btn btn-outline-info btn-sm" th:formaction="@{/addToCart}" th:text="#{label.form.addToCart}">ADD TO CART</button>
                         <input name="itemNumber" type="number" value="1" min="0" max="${product.quantity}" step="1" style="width:80px;"/>
                         <button class="btn btn-outline-success btn-sm" th:formaction="@{/buyNow}" th:text="#{label.form.buy}">BUY NOW</button>
                     </form>
@@ -51,8 +53,9 @@
 
     </div>
 
-    <div th:fragment="pagination">
-        <ul class="pagination justify-content-center" style="margin:20px 0">
+    <div th:if="${currentPage}"  th:fragment="pagination">
+        <ul class="pagination justify-content-center mb-3 mt-3" >
+<!--            style="margin:20px 0"-->
             <li th:class="'page-item ' + (${currentPage}==1? 'disabled')">
                 <a th:class="page-link" th:href="@{/main/{page}(page=${previousPage}, category=${category})}" th:text="#{label.pagination.previous}">previous</a>
             </li>

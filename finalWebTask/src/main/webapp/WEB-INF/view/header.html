@@ -58,7 +58,19 @@
                         <input type="hidden"/>
                     </form>
                 </li>
+                <li class="nav-item active">
+                    <form class="input-group-append" th:action="@{/search}">
+                        <input type="text" class="form-control" name="criterion" th:placeholder="#{label.form.search}">
+                        <input type="hidden" name="category" th:value="${category}">
+                        <button class="btn btn-success" type="submit" th:text="#{label.form.go}">Go</button>
+                    </form>
+                </li>
+
             </ul>
+
+<!--            <div class="input-group d-inline-block" th:fragment="search">-->
+<!--                -->
+<!--            </div>-->
 
 
             <h7 sec:authorize="hasRole('ROLE_USER') && !hasRole('ROLE_ADMIN')">

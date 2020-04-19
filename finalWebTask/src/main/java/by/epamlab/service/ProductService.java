@@ -14,5 +14,6 @@ public interface ProductService {
     void deleteProduct(Integer productId);
     List<Product> findProductsByCategory(String category);
     List<Product> findProductsByCategoryAndPage(String category, int limit, int offset);
+    List<Product> findProductsByCategoryAndCriterion(String category, String criterion);
     long getTotalProductsNumber(String category);
 }
