@@ -1,6 +1,7 @@
 package by.epamlab.controller;
 
 import by.epamlab.dto.ProductDto;
+import by.epamlab.exception.ProductNotFoundException;
 import by.epamlab.model.beans.Product;
 import by.epamlab.service.CartService;
 import by.epamlab.service.ProductService;
@@ -65,9 +66,12 @@ public class ProductController {
     }
 
     @GetMapping("/getProductDescription")
-    public String getProductWithDescription(@RequestParam(value = "productId", required = true) Integer productId,
+    public String getProductWithDescription(@RequestParam(value = "productId") Integer productId,
                                 Model model){
         Product product = productService.findProduct(productId);
+        if (product == null){
+            throw new ProductNotFoundException(productId.toString());
+        }
         model.addAttribute("product", product);
         model.addAttribute("itemQuantity", cartService.getCart().getItemQuantity());
         return "productDescription";
