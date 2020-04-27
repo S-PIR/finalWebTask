@@ -2,7 +2,6 @@ package by.epamlab.repositories;
 
 import by.epamlab.config.HibernateConf;
 import by.epamlab.exception.QuantityOutOfRangeException;
-import by.epamlab.model.beans.Category;
 import by.epamlab.model.beans.CategoryType;
 import by.epamlab.model.beans.Product;
 import by.epamlab.model.beans.cart.Saleable;
@@ -13,13 +12,16 @@ import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 import java.util.Map;
-
-import static by.epamlab.exception.QuantityOutOfRangeException.DEFAULT_MESSAGE;
 
 @Repository
 @Transactional
@@ -130,9 +132,9 @@ public class ProductRepo implements ProductRepository {
 
     @Override
     public List<Product> findAllByCategory(String category) {
+        int cat = CategoryType.valueOf(category).ordinal();
+        String hql = "from Product where category = :cat";
         try (Session session = sessionFactory.openSession()) {
-            int cat = CategoryType.valueOf(category).ordinal();
-            String hql = "from Product where category = :cat";
             Query query = session.createQuery(hql);
             query.setParameter("cat", cat);
             return query.list();
@@ -140,9 +142,10 @@ public class ProductRepo implements ProductRepository {
     }
 
     @Override
-    public List<Product> findAllByPage(int limit, int offset) {
+    public List<Product> findAllByPageAndOrder(int limit, int offset, String order) {
+        SortDirection sd = SortDirection.valueOf(order.toUpperCase());
+        String hql = "from Product" + sd.getQuery();
         try (Session session = sessionFactory.openSession()) {
-            String hql = "from Product p order by p.id";
             Query query = session.createQuery(hql);
             query.setFirstResult(offset);
             query.setMaxResults(limit);
@@ -150,26 +153,41 @@ public class ProductRepo implements ProductRepository {
         }
     }
 
-    @Override
-    public List<Product> findAllByCategoryAndPage(String category, int limit, int offset) {
-        try (Session session = sessionFactory.openSession()) {
-            int cat = CategoryType.valueOf(category).ordinal();
-            String hql = "from Product where category = :cat";
-            Query query = session.createQuery(hql);
-            query.setParameter("cat", cat);
-            query.setFirstResult(offset);
-            query.setMaxResults(limit);
-            return query.list();
-        }
-    }
+//    @Override
+//    public List<Product> findAllByCategoryAndPage(String category, int limit, int offset) {
+//        int cat = CategoryType.valueOf(category).ordinal();
+//        String hql = "from Product where category = :cat";
+//        try (Session session = sessionFactory.openSession()) {
+//            Query query = session.createQuery(hql);
+//            query.setParameter("cat", cat);
+//            query.setFirstResult(offset);
+//            query.setMaxResults(limit);
+//            return query.list();
+//        }
+//    }
 
     @Override
     public List<Product> findAllByCriterion(String criterion) {
+        String pattern = "%" + criterion + "%";
+        String hql = "from Product where name like :pattern";
         try (Session session = sessionFactory.openSession()) {
-            String pattern = "%" + criterion + "%";
-            String hql = "from Product where name like :pattern";
             Query query = session.createQuery(hql);
             query.setParameter("pattern", pattern);
+            return query.list();
+        }
+    }
+
+    @Override
+    public List<Product> findAllByCategoryAndPageAndOrder(String category, int limit, int offset, String order) {
+        int cat = CategoryType.valueOf(category).ordinal();
+        SortDirection sd = SortDirection.valueOf(order.toUpperCase());
+        String hql = "from Product where category = :cat" + sd.getQuery();
+        System.out.println(hql);
+        try (Session session = sessionFactory.openSession()) {
+            Query<Product> query = session.createQuery(hql);
+            query.setParameter("cat", cat);
+            query.setFirstResult(offset);
+            query.setMaxResults(limit);
             return query.list();
         }
     }
@@ -179,7 +197,6 @@ public class ProductRepo implements ProductRepository {
         try (Session session = sessionFactory.openSession()) {
             int cat = CategoryType.valueOf(category).ordinal();
             String pattern = "%" + criterion + "%";
-            System.out.println("pattern = " + pattern);
             String hql = "from Product where category = :cat and name like :pattern";
             Query query = session.createQuery(hql);
             query.setParameter("cat", cat);

@@ -14,7 +14,23 @@
 
 <div class="container" >
 
-    <div th:insert="main::pagination"/>
+    <div th:if="${order}" class="row justify-content-around">
+        <div class=""></div>
+        <div class=""></div>
+        <div class=""></div>
+        <div class="" th:insert="main::pagination"/>
+        <div class="dropdown dropright mr-5 m-3">
+            <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" id="dropdownSortMenu" th:text="|#{label.sort.by} ${order.getOrder()}|">Sort By:</button>
+            <div class="dropdown-menu shadow" aria-labelledby="dropdownSortMenu">
+                <a class="dropdown-item " th:href="@{/main/{page}(page=${page}, category=${category}, order='featured')}" th:text="#{label.sort.featured}">Featured</a>
+                <a class="dropdown-item " th:href="@{/main/{page}(page=${page}, category=${category}, order='price_acs')}" th:text="#{label.sort.price.ascending}">Price ascending</a>
+                <a class="dropdown-item " th:href="@{/main/{page}(page=${page}, category=${category}, order='price_desc')}" th:text="#{label.sort.price.descending}">Price descending</a>
+                <a class="dropdown-item " th:href="@{/main/{page}(page=${page}, category=${category}, order='name_acs')}" th:text="#{label.sort.name.ascending}">Name ascending</a>
+                <a class="dropdown-item " th:href="@{/main/{page}(page=${page}, category=${category}, order='name_desc')}" th:text="#{label.sort.name.descending}">Name descending</a>
+            </div>
+        </div>
+
+    </div>
 
     <div class="row">
         <div th:each="product : ${products}" class="card border-light col-sm-4">
@@ -39,7 +55,7 @@
                 <div class="text-truncate" style="margin: 5%">
                     <a class="card-text" href="#" th:href="@{/getProductDescription(productId=${product.id})}" th:text="${product.description}">Product description</a>
                 </div>
-                <div class="d-flex justify-content-center">
+                <div th:if="${product.getQuantity() > 0}" class="d-flex justify-content-center">
                     <form action="" method="post">
                         <input type="hidden" name="productId" th:value="${product.id}"/>
                         <button class="btn btn-outline-info btn-sm" th:formaction="@{/addToCart}" th:text="#{label.form.addToCart}">ADD TO CART</button>
@@ -55,15 +71,14 @@
 
     <div th:if="${currentPage}"  th:fragment="pagination">
         <ul class="pagination justify-content-center mb-3 mt-3" >
-<!--            style="margin:20px 0"-->
             <li th:class="'page-item ' + (${currentPage}==1? 'disabled')">
-                <a th:class="page-link" th:href="@{/main/{page}(page=${previousPage}, category=${category})}" th:text="#{label.pagination.previous}">previous</a>
+                <a th:class="page-link" th:href="@{/main/{page}(page=${currentPage} - 1, category=${category}, order=${order.toString()})}" th:text="#{label.pagination.previous}">previous</a>
             </li>
             <li th:each="page : ${pages}" th:class="'page-item ' + (${page}==${currentPage}? 'active') ">
-                <a class="page-link" th:href="@{/main/{page}(page=${page}, category=${category})}" th:text="${page}">1</a>
+                <a class="page-link" th:href="@{/main/{page}(page=${page}, category=${category}, order=${order})}" th:text="${page}">1</a>
             </li>
-            <li th:class="'page-item ' + (${currentPage}==${lastPage}? 'disabled')">
-                <a th:class="page-link" th:href="@{/main/{page}(page=${nextPage}, category=${category})}" th:text="#{label.pagination.next}">next</a>
+            <li th:class="'page-item ' + (${currentPage}==${pages.length}? 'disabled')">
+                <a th:class="page-link" th:href="@{/main/{page}(page=${currentPage} + 1, category=${category}, order=${order.toString()})}" th:text="#{label.pagination.next}">next</a>
             </li>
         </ul>
     </div>

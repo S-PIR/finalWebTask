@@ -3,6 +3,7 @@ package by.epamlab.controller;
 import by.epamlab.dto.ProductDto;
 import by.epamlab.exception.ProductNotFoundException;
 import by.epamlab.model.beans.Product;
+import by.epamlab.repositories.SortDirection;
 import by.epamlab.service.CartService;
 import by.epamlab.service.ProductService;
 import by.epamlab.validation.product.ProductExistsException;
@@ -34,6 +35,7 @@ public class ProductController {
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
     private static final int PRODUCTS_ON_PAGE = 6;
     private static final Integer DEFAULT_PAGE_NUMBER = 1;
+    public static final String FEATURED = "featured";
 
     @Autowired
     private ProductService productService;
@@ -48,19 +50,19 @@ public class ProductController {
     @GetMapping(value = {"/main", "/main/{optionalPageId}"})
     public String getAllProducts(@PathVariable Optional<Integer> optionalPageId,
                                  @RequestParam(value = "category", required = false) String category,
+                                 @RequestParam(value = "order", required = false) Optional<String> optionalOrder,
                                  Map<String, Object> model){
         Integer pageId = optionalPageId.orElse(DEFAULT_PAGE_NUMBER);
+        String order = optionalOrder.orElse(FEATURED);
         List<Product> products = productService
-                .findProductsByCategoryAndPage(category, PRODUCTS_ON_PAGE, (pageId-1)*PRODUCTS_ON_PAGE);
+                .findProductsByCategoryAndPageAndOrder(category, PRODUCTS_ON_PAGE, (pageId-1)*PRODUCTS_ON_PAGE, order);
         int pageNumber = (int)((productService.getTotalProductsNumber(category) + PRODUCTS_ON_PAGE - 1) / PRODUCTS_ON_PAGE);
         int[] pages = IntStream.rangeClosed(DEFAULT_PAGE_NUMBER, pageNumber).toArray();
         System.out.println("category = " + category);
         model.put("category", category);
-        model.put("previousPage", pageId - 1);
+        model.put("order", SortDirection.valueOf(order.toUpperCase()));
         model.put("currentPage", pageId);
-        model.put("nextPage", pageId + 1);
         model.put("pages", pages);
-        model.put("lastPage", pages.length);
         model.put("products", products);
         model.put("itemQuantity", cartService.getCart().getItemQuantity());
         return "main";
@@ -159,8 +161,8 @@ public class ProductController {
 
     @GetMapping("/search")
     public String getSearchedProducts(@RequestParam(value = "category", required = false) String category,
-                                     @RequestParam(value = "criterion") String criterion,
-                                     Map<String, Object> model){
+                                      @RequestParam(value = "criterion") String criterion,
+                                      Map<String, Object> model){
         List<Product> products = productService
                 .findProductsByCategoryAndCriterion(category, criterion);
         model.put("category", category);

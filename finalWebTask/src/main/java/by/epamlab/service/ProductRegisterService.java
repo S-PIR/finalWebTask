@@ -70,7 +70,6 @@ public class ProductRegisterService implements ProductService {
 
     @Override
     public List<Product> findProductsByCategory(String category){
-        System.out.println("category = " + category);
         if (category == null || category.isEmpty()){
             return repository.findAll();
         } else {
@@ -78,12 +77,21 @@ public class ProductRegisterService implements ProductService {
         }
     }
 
+//    @Override
+//    public List<Product> findProductsByCategoryAndPage(String category, int limit, int offset, String order){
+//        if (category == null || category.isEmpty()){
+//            return repository.findAllByPage(limit, offset, order);
+//        } else {
+//            return repository.findAllByCategoryAndPage(category, limit, offset);
+//        }
+//    }
+
     @Override
-    public List<Product> findProductsByCategoryAndPage(String category, int limit, int offset){
+    public List<Product> findProductsByCategoryAndPageAndOrder(String category, int limit, int offset, String order) {
         if (category == null || category.isEmpty()){
-            return repository.findAllByPage(limit, offset);
+            return repository.findAllByPageAndOrder(limit, offset, order);
         } else {
-            return repository.findAllByCategoryAndPage(category, limit, offset);
+            return repository.findAllByCategoryAndPageAndOrder(category, limit, offset, order);
         }
     }
 
