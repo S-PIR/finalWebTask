@@ -1,6 +1,7 @@
 package by.epamlab.config;
 
 import by.epamlab.service.MyUserDetailsService;
+import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -47,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .authorizeRequests()
                     .antMatchers("/main*").hasAnyRole("ADMIN", "USER")
                 .and()
-                    .authorizeRequests().antMatchers("/admin*", "/addProduct*").hasRole("ADMIN")
+                    .authorizeRequests().antMatchers("/admin*", "/addProduct*", "/deleteProduct*", "/updateProduct*").hasRole("ADMIN")
                 .and()
                     .authorizeRequests().antMatchers("/login", "/home", "/registration", "/resources/**").permitAll()
                 .and()
@@ -56,12 +57,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .successForwardUrl("/postLogin")
                     .failureUrl("/loginFailed")
                 .and()
-                    .logout().logoutUrl("doLogout").logoutSuccessUrl("/login").permitAll()
+                    .logout().logoutUrl("doLogout").logoutSuccessUrl("/home").permitAll()
+                .and()
+                    .logout().deleteCookies("JSESSIONID")
+                .and()
+                    .rememberMe().key("uniqueAndSecret")
+//                .and()
+//                    .oauth2Login()
                 .and()
                     .sessionManagement()
-                        .invalidSessionUrl("/login")
+                        .invalidSessionUrl("/home")
                         .maximumSessions(1)
-                        .expiredUrl("/login");
+                        .expiredUrl("/home");
+
 
 
 

@@ -32,6 +32,10 @@
 
     </div>
 
+    <div th:if="${products.isEmpty()}" class="">
+        <h3 class="text-center display-3" th:text="|#{message.search.notfound} ${criterion}|">Searched </h3>
+        <h4 class="text-center display-4" th:text="#{message.search.try.again}"></h4>
+    </div>
     <div class="row">
         <div th:each="product : ${products}" class="card border-light col-sm-4">
             <div>

@@ -77,14 +77,6 @@ public class ProductRegisterService implements ProductService {
         }
     }
 
-//    @Override
-//    public List<Product> findProductsByCategoryAndPage(String category, int limit, int offset, String order){
-//        if (category == null || category.isEmpty()){
-//            return repository.findAllByPage(limit, offset, order);
-//        } else {
-//            return repository.findAllByCategoryAndPage(category, limit, offset);
-//        }
-//    }
 
     @Override
     public List<Product> findProductsByCategoryAndPageAndOrder(String category, int limit, int offset, String order) {
