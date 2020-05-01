@@ -30,10 +30,13 @@ public class AppInitializer implements WebApplicationInitializer {
 
         container.addListener(new ContextLoaderListener(context));
 
-        ServletRegistration.Dynamic dispatcher =
-                container.addServlet("dispatcher", new DispatcherServlet(context));
-        dispatcher.setLoadOnStartup(1);
-        dispatcher.addMapping("/");
+        DispatcherServlet dispatcherServlet = new DispatcherServlet(context);
+        dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
+
+        ServletRegistration.Dynamic registration =
+                container.addServlet("registration", dispatcherServlet);
+        registration.setLoadOnStartup(1);
+        registration.addMapping("/");
 
 
         //tmp dir initialising костыль, не знаю, как правильно...
@@ -44,8 +47,7 @@ public class AppInitializer implements WebApplicationInitializer {
 
         MultipartConfigElement multipartConfigElement = new MultipartConfigElement(TMP_FOLDER,
                 MAX_UPLOAD_SIZE, MAX_UPLOAD_SIZE * 2, MAX_UPLOAD_SIZE / 2 );
-        dispatcher.setMultipartConfig(multipartConfigElement);
-
+        registration.setMultipartConfig(multipartConfigElement);
 
 
     }

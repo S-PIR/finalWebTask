@@ -1,6 +1,7 @@
 package by.epamlab.controller;
 
 import by.epamlab.dto.ProductDto;
+import by.epamlab.exception.HandlerNotFoundException;
 import by.epamlab.exception.ProductNotFoundException;
 import by.epamlab.model.beans.Product;
 import by.epamlab.repositories.SortDirection;
@@ -47,7 +48,7 @@ public class ProductController {
     @Qualifier("productValidator")
     private Validator validator;
 
-    @GetMapping(value = {"/main", "/main/{optionalPageId}"})
+    @GetMapping(value = {"/main", "/main/{optionalPageId:[\\d]+}"})
     public String getAllProducts(@PathVariable Optional<Integer> optionalPageId,
                                  @RequestParam(value = "category", required = false) String category,
                                  @RequestParam(value = "order", required = false) Optional<String> optionalOrder,
@@ -137,6 +138,7 @@ public class ProductController {
         Product newProduct = new Product();
         if (!bindingResult.hasErrors()) {
             newProduct = updateProduct(productId, productDto);
+            LOGGER.info(PRODUCT_UPDATED + productId);
         }
         if (newProduct == null) {
             bindingResult.rejectValue("name", "UpdatedProductId.product.name");
@@ -165,6 +167,10 @@ public class ProductController {
                                       Map<String, Object> model){
         List<Product> products = productService
                 .findProductsByCategoryAndCriterion(category, criterion);
+        if (products.isEmpty()){
+            model.put("criterion", criterion);
+        }
+
         model.put("category", category);
         model.put("products", products);
         model.put("itemQuantity", cartService.getCart().getItemQuantity());
