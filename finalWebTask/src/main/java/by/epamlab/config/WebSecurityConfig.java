@@ -58,6 +58,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .logout().logoutUrl("doLogout").logoutSuccessUrl("/login").permitAll()
                 .and()
+                    .oauth2Login( )
+                .and()
                     .sessionManagement()
                         .invalidSessionUrl("/login")
                         .maximumSessions(1)
